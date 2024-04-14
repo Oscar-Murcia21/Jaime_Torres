@@ -1,0 +1,59 @@
+﻿@model List<Empleados_Modelo>
+@{
+    ViewData["Title"] = "Listar_Empleados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        Lista de empleados
+    </div>
+    <div class="card-body">
+        <a asp-action="Guardar_Empleados" asp-controller="Principal_Controlador" class="btn btn-secondary">Nuevo empleado</a>
+        <hr />
+        <table class="table d-xxl-table-row">
+            <th>Id</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Direccion</th>
+            <th>Telefono</th>
+            <th>Correo electronico</th>
+            <th>Cargo</th>
+            <th>Departamento</th>
+            <th>Fecha ingreso</th>
+            <th>Salario base</th>
+            <th>Tipo contrato</th>
+            <th>Nro cuenta</th>
+            <th>Banco</th>
+            </tr>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id_Empleado</td>
+                        <td>@item.Nombres</td>
+                        <td>@item.Apellidos</td>
+                        <td>@item.Direccion</td>
+                        <td>@item.Telefono</td>
+                        <td>@item.Correo_Electronico</td>
+                        <td>@item.Cargo</td>
+                        <td>@item.Departamento</td>
+                        <td>@item.Fecha_Ingreso</td>
+                        <td>@item.Salario_Base</td>
+                        <td>@item.Tipo_Contrato</td>
+                        <td>@item.Nro_Cuenta</td>
+                        <td>@item.Banco</td>
+                        <td>
+                            <a asp-action="Editar_Empleados" asp-controller="Principal_Controlador" class="btn btn-secondary btn-sm" asp-route-Id="@item.Id_Empleado">Editar</a>
+                            <a asp-action="Eliminar_Empleados" asp-controller="Principal_Controlador" class="btn btn-secondary btn-sm" asp-route-Id="@item.Id_Empleado">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+
+    </div>
+</div>
+

@@ -1,0 +1,46 @@
+﻿@model List<Incapacidades_Modelo>
+@{
+    ViewData["Title"] = "Listar_Incapacidades";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        Lista de empleados
+    </div>
+    <div class="card-body">
+        <a asp-action="Empleados_Detalle" asp-controller="Principal_Controlador" class="btn btn-secondary">Nueva incapacidad</a>
+        <hr />
+        <table class="table d-xxl-table-row">
+            <th>Id Empleado</th>
+            <th>Motivo</th>
+            <th>Descripcion</th>
+            <th>Dias</th>
+            <th>Fecha inicio</th>
+            <th>Fecha fin</th>
+            </tr>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id_Empleado</td>
+                        <td>@item.Motivo</td>
+                        <td>@item.Descripcion</td>
+                        <td>@item.Dias</td>
+                        <td>@item.Fecha_Inicio</td>
+                        <td>@item.Fecha_Fin</td>
+                        <td>
+                            <a asp-action="Editar_Incapacidades" asp-controller="Principal_Controlador" class="btn btn-secondary btn-sm" asp-route-Id="@item.Id_Incapacidad">Editar</a>
+                            <a asp-action="Eliminar_Empleados" asp-controller="Principal_Controlador" class="btn btn-secondary btn-sm" asp-route-Id="@item.Id_Incapacidad">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+
+    </div>
+</div>
+
+

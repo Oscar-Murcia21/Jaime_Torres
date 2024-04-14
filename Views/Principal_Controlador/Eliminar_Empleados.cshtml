@@ -1,0 +1,26 @@
+﻿@model Empleados_Modelo
+@{
+    ViewData["Title"] = "Eliminar_Empleados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        Editar usuario
+    </div>
+    <div class="card-body">
+        <form asp-action="Borrar_Empleado" asp-controller="Principal_Controlador" method="post">
+            <input asp-for="Id_Empleado" type="hidden" class="form-control">
+            <div class="alert alert-danger">
+                ¿confirme para eliminar el usuario @Html.DisplayTextFor(m => m.Nombres)?
+            </div>
+            <button type="submit" class="btn btn-primary">Eliminar</button>
+
+            <a asp-action="Listar_Empleados" asp-controller="Principal_Controlador" class="btn btn-secondary">Regresar</a>
+        </form>
+
+
+
+    </div>
+</div>
+

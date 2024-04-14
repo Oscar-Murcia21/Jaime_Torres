@@ -1,0 +1,85 @@
+﻿@model Incapacidades_Modelo
+@{
+    ViewData["Title"] = "Guardar_Incapacidades";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    Crear empleado
+    <div class="card-header">
+        <div>
+            <form asp-action="Guardar_Incapacidades" asp-controller="Principal_Controlador" method="post">
+                <button type="submit" class="btn btn-primary">Nuevo</button>
+            </form>
+            <form asp-action="Listar_Incapacidades" asp-controller="Principal_Controlador" method="post">
+                <button type="submit" class="btn btn-secondary">Listado</button>
+            </form>
+        </div>
+    </div>
+    <div class="card-body">
+        <form asp-action="Guardar_Incapacidades" asp-controller="Principal_Controlador" method="post">
+            <div class="mb-3">
+                <label class="form-label">Empleado</label>
+                <a class="btn btn-success btn-sm" asp-action="Empleados_Detalle" asp-asp-controller="Principal_Controlador" asp-route-idEmpleado="0">Crear Nuevo</a>
+                <hr/>
+                <thead>
+                    <tr>
+                        <th>Nombre Completo</th>
+                        <th>Cargo</th>
+                        <th>Salario</th>
+                        <tr/>
+                </thead>
+                <tbody>
+                
+
+                </tbody>            
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Empleado</label>
+                <input asp-for="Id_Empleado" type="text" class="form-control">
+                <span asp-validation-for="Id_Empleado" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Motivo</label>
+                <input asp-for="Motivo" type="text" class="form-control">
+                <span asp-validation-for="Motivo" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Descripcion</label>
+                <input asp-for="Descripcion" type="text" class="form-control">
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Dias</label>
+                <input asp-for="Dias" type="text" class="form-control">
+                <span asp-validation-for="Dias" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fecha inicial</label>
+                <input asp-for="Fecha_Inicio" type="date">
+                <span asp-validation-for="Fecha_Inicio" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fecha final</label>
+                <input asp-for="Fecha_Fin" type="date">
+                <span asp-validation-for="Fecha_Fin" class="text-danger"></span>
+            </div>
+            <div class="mb-3" style="display: none">
+                <label class="form-label">Fecha creacion</label>
+                <input asp-for="Fecha_Creacion" type="date">
+                <span asp-validation-for="Fecha_Creacion" class="text-danger"></span>
+            </div>
+            <div class="mb-3" style="display: none">
+                <label class="form-label">Fecha modificacion</label>
+                <input asp-for="Fecha_Modificacion" type="date">
+                <span asp-validation-for="Fecha_Modificacion" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+
+
+    </div>
+</div>
+
+
+
