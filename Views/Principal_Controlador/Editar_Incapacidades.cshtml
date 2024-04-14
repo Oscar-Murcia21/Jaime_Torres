@@ -1,4 +1,4 @@
-﻿
+﻿@model Jaime_Torres.Models.View_Models.Empleado_View
 @{
     ViewData["Title"] = "Editar_Incapacidades";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,3 +6,61 @@
 
 <h1>Editar_Incapacidades</h1>
 
+<div class="card">
+    Editar incapacidad
+    <div class="card-header">
+        <a asp-action="Empleados_Detalle" asp-controller="Principal_Controlador" class="btn btn-secondary">Nueva incapacidad</a>
+        <form asp-action="Listar_Incapacidades" asp-controller="Principal_Controlador" method="post">
+            <button type="submit" class="btn btn-secondary">Listado</button>
+        </form>
+    </div>
+    <div class="card-body">
+        <form asp-action="Modificar_Incapacidades" asp-controller="Principal_Controlador" method="get">
+            <input type="hidden" asp-for="oIncapacidad.Id_Incapacidad" />
+            <div class="mb-2">
+                <label class="form-label" asp-for="oIncapacidad.Id_Empleado">Id_Empleado</label>
+                <select class="form-select form-select-sm" asp-for="oIncapacidad.Id_Empleado" asp-items="Model.oListaEmpleados">
+                    <option selectd>--- seleccione ---</option> />
+                </select>
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label" asp-for="oIncapacidad.Motivo">Motivo</label>
+                <input class="form-control form-control-sm" asp-for="oIncapacidad.Motivo" type="text" />
+            </div>
+            <div class="mb-2">
+                <label class="form-label" asp-for="oIncapacidad.Descripcion">Descripcion</label>
+                <input class="form-control form-control-sm" asp-for="oIncapacidad.Descripcion" type="text" />
+            </div>
+            <div class="mb-2">
+                <label class="form-label" asp-for="oIncapacidad.Dias">Dias</label>
+                <input class="form-control form-control-sm" asp-for="oIncapacidad.Dias" type="text" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fecha inicial</label>
+                <input asp-for="oIncapacidad.Fecha_Inicio" type="date">
+                <span asp-validation-for="oIncapacidad.Fecha_Inicio" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fecha final</label>
+                <input asp-for="oIncapacidad.Fecha_Fin" type="date">
+                <span asp-validation-for="oIncapacidad.Fecha_Fin" class="text-danger"></span>
+            </div>
+            <div class="mb-3" style="display: none">
+                <label class="form-label">Fecha creacion</label>
+                <input asp-for="oIncapacidad.Fecha_Creacion" type="date">
+                <span asp-validation-for="oIncapacidad.Fecha_Creacion" class="text-danger"></span>
+            </div>
+            <div class="mb-3" style="display: none">
+                <label class="form-label">Fecha modificacion</label>
+                <input asp-for="oIncapacidad.Fecha_Modificacion" type="date">
+                <span asp-validation-for="oIncapacidad.Fecha_Modificacion" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+
+    </div>
+
+
+
+</div>

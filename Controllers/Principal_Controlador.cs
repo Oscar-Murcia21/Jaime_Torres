@@ -111,8 +111,61 @@ namespace Jaime_Torres.Controllers
 
         public IActionResult Editar_Incapacidades(int Id)
         {
-            var oIncapacidad = incapacidadDatos.Consultar_Incapacidad(Id);
-            return View(oIncapacidad);
+            var oIncapacidad2 = incapacidadDatos.Consultar_Incapacidad(Id);
+
+            var oLista = contactoDatos.Listar_Empleado();
+            //return View(oLista);
+
+
+            Empleado_View oEmpleado_View = new Empleado_View()
+            {
+                oIncapacidad = oIncapacidad2,
+                oListaEmpleados = oLista.Select(cargo => new SelectListItem()
+                {
+                    Text = cargo.Nombres,
+                    Value = cargo.Id_Empleado.ToString()
+                }).ToList()
+            };
+            return View(oEmpleado_View);
+
+
+            //return View(oIncapacidad);
+        }
+
+        public IActionResult Modificar_Incapacidades(Incapacidades_Modelo oIncapacidad)
+        {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Editar_Incapacidades");
+            }
+
+            var respuesta = incapacidadDatos.Editar_Incapacidad(oIncapacidad);
+            if (respuesta)
+            {
+                return RedirectToAction("Listar_Incapacidades");
+            }
+            else
+            {
+                return View();
+            }
+        }
+        public IActionResult Eliminar_Incapacidades(int Id)
+        {
+            var oContacto = incapacidadDatos.Consultar_Incapacidad(Id);
+            return View(oContacto);
+        }
+
+        public IActionResult Borrar_Incapacidad(Incapacidades_Modelo oIncapacidad)
+        {
+            var respuesta = incapacidadDatos.Eliminar_Incapacidad(oIncapacidad.Id_Incapacidad);
+            if (respuesta)
+            {
+                return RedirectToAction("Listar_Incapacidades");
+            }
+            else
+            {
+                return View();
+            }
         }
 
 

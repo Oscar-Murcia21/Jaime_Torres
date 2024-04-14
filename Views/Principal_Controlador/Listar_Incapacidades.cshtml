@@ -6,7 +6,7 @@
 
 <div class="card">
     <div class="card-header">
-        Lista de empleados
+        Lista de incapacidades
     </div>
     <div class="card-body">
         <a asp-action="Empleados_Detalle" asp-controller="Principal_Controlador" class="btn btn-secondary">Nueva incapacidad</a>
@@ -32,7 +32,7 @@
                         <td>@item.Fecha_Fin</td>
                         <td>
                             <a asp-action="Editar_Incapacidades" asp-controller="Principal_Controlador" class="btn btn-secondary btn-sm" asp-route-Id="@item.Id_Incapacidad">Editar</a>
-                            <a asp-action="Eliminar_Empleados" asp-controller="Principal_Controlador" class="btn btn-secondary btn-sm" asp-route-Id="@item.Id_Incapacidad">Eliminar</a>
+                            <a asp-action="Eliminar_Incapacidades" asp-controller="Principal_Controlador" class="btn btn-secondary btn-sm" asp-route-Id="@item.Id_Incapacidad">Eliminar</a>
                         </td>
                     </tr>
                 }

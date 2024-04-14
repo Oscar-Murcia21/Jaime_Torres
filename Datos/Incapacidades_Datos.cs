@@ -120,6 +120,60 @@ namespace Jaime_Torres.Datos
             return oIncapacidad;
         }
 
+        public bool Editar_Incapacidad(Incapacidades_Modelo oincapacidad)
+        {
+            bool rpta;
+            try
+            {
+                var cn = new Conexion();
+                using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+                {
+                    conexion.Open();
+                    SqlCommand cmd = new SqlCommand("Editar_Incapacidad", conexion);
+                    cmd.Parameters.AddWithValue("Id_Incapacidad", oincapacidad.Id_Incapacidad);
+                    cmd.Parameters.AddWithValue("Id_Empleado", oincapacidad.Id_Empleado);
+                    cmd.Parameters.AddWithValue("Motivo", oincapacidad.Motivo);
+                    cmd.Parameters.AddWithValue("Descripcion", oincapacidad.Descripcion);
+                    cmd.Parameters.AddWithValue("Dias", oincapacidad.Dias);
+                    cmd.Parameters.AddWithValue("Fecha_Inicio", oincapacidad.Fecha_Inicio);
+                    cmd.Parameters.AddWithValue("Fecha_Fin", oincapacidad.Fecha_Fin);
+                    cmd.Parameters.AddWithValue("Fecha_Creacion", oincapacidad.Fecha_Creacion);
+                    cmd.Parameters.AddWithValue("Fecha_Modificacion", DateTime.Now);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.ExecuteNonQuery();
+                }
+                rpta = true;
+            }
+            catch (Exception ex)
+            {
+                rpta = false;
+            }
+            return rpta;
+        }
+
+        public bool Eliminar_Incapacidad(int Id_Incapacidad)
+        {
+            bool rpta;
+            try
+            {
+                var cn = new Conexion();
+                using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+                {
+                    conexion.Open();
+                    SqlCommand cmd = new SqlCommand("Eliminar_Incapacidad", conexion);
+                    cmd.Parameters.AddWithValue("Id_Incapacidad", Id_Incapacidad);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.ExecuteNonQuery();
+                }
+                rpta = true;
+            }
+            catch (Exception ex)
+            {
+                rpta = false;
+            }
+            return rpta;
+        }
+
 
     }
 }
