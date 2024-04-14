@@ -4,7 +4,7 @@ using System.Data;
 using System;
 
 namespace Jaime_Torres.Datos
-{S
+{
     public class Empleados_Datos
     {
         private DateTime v;
