@@ -4,10 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Editar_Incapacidades</h1>
-
 <div class="card">
-    Editar incapacidad
     <div class="card-header">
         <a asp-action="Empleados_Detalle" asp-controller="Principal_Controlador" class="btn btn-secondary">Nueva incapacidad</a>
         <form asp-action="Listar_Incapacidades" asp-controller="Principal_Controlador" method="post">
@@ -27,14 +24,17 @@
             <div class="mb-2">
                 <label class="form-label" asp-for="oIncapacidad.Motivo">Motivo</label>
                 <input class="form-control form-control-sm" asp-for="oIncapacidad.Motivo" type="text" />
+                <span asp-validation-for="oIncapacidad.Motivo" class="text-danger"></span>
             </div>
             <div class="mb-2">
                 <label class="form-label" asp-for="oIncapacidad.Descripcion">Descripcion</label>
                 <input class="form-control form-control-sm" asp-for="oIncapacidad.Descripcion" type="text" />
+                <span asp-validation-for="oIncapacidad.Descripcion" class="text-danger"></span>
             </div>
             <div class="mb-2">
                 <label class="form-label" asp-for="oIncapacidad.Dias">Dias</label>
                 <input class="form-control form-control-sm" asp-for="oIncapacidad.Dias" type="text" />
+                <span asp-validation-for="oIncapacidad.Dias" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label class="form-label">Fecha inicial</label>

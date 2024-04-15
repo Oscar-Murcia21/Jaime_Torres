@@ -1,0 +1,65 @@
+﻿@model Jaime_Torres.Models.View_Models.Empleado_Vacaciones_View
+@{
+    ViewData["Title"] = "Empleados_Detalle_Vacaciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    Crear vacacion
+    <div class="card-header">
+        <a asp-action="Empleados_Detalle_Vacaciones" asp-controller="Principal_Controlador" class="btn btn-secondary">Nueva vacacion</a>
+        <form asp-action="Listar_Vacaciones" asp-controller="Principal_Controlador" method="post">
+            <button type="submit" class="btn btn-secondary">Listado</button>
+        </form>
+    </div>
+    <div class="card-body">
+        <form asp-action="Guardar_Vacaciones" asp-controller="Principal_Controlador" method="get">
+            <input type="hidden" asp-for="oVacaciones.Id_Vacacion"/>
+            <div class="mb-2">
+                <label class="form-label" asp-for="oVacaciones.Id_Empleado">Id_Empleado</label>
+                <select class="form-select form-select-sm" asp-for="oVacaciones.Id_Empleado" asp-items="Model.oListaEmpleados2">
+                    <option selectd>--- seleccione ---</option> />
+                </select>
+            </div>
+            <div class="mb-2">
+                <label class="form-label" asp-for="oVacaciones.Motivo">Motivo</label>
+                <input class="form-control form-control-sm" asp-for="oVacaciones.Motivo" type="text" />
+            </div>
+            <div class="mb-2">
+                <label class="form-label" asp-for="oVacaciones.Descripcion">Descripcion</label>
+                <input class="form-control form-control-sm" asp-for="oVacaciones.Descripcion" type="text" />
+            </div>
+            <div class="mb-2">
+                <label class="form-label" asp-for="oVacaciones.Dias">Dias</label>
+                <input class="form-control form-control-sm" asp-for="oVacaciones.Dias" type="text" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fecha inicial</label>
+                <input asp-for="oVacaciones.Fecha_Inicio" type="date">
+                <span asp-validation-for="oVacaciones.Fecha_Inicio" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fecha final</label>
+                <input asp-for="oVacaciones.Fecha_Fin" type="date">
+                <span asp-validation-for="oVacaciones.Fecha_Fin" class="text-danger"></span>
+            </div>
+            <div class="mb-3" style="display: none">
+                <label class="form-label">Fecha creacion</label>
+                <input asp-for="oVacaciones.Fecha_Creacion" type="date">
+                <span asp-validation-for="oVacaciones.Fecha_Creacion" class="text-danger"></span>
+            </div>
+            <div class="mb-3" style="display: none">
+                <label class="form-label">Fecha modificacion</label>
+                <input asp-for="oVacaciones.Fecha_Modificacion" type="date">
+                <span asp-validation-for="oVacaciones.Fecha_Modificacion" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+
+    </div>
+
+
+
+</div>
+
+

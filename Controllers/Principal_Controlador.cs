@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Mvc;
 using Jaime_Torres.Datos;
 using Jaime_Torres.Models;
 using Jaime_Torres.Models.View_Models;
@@ -12,7 +13,8 @@ namespace Jaime_Torres.Controllers
     {
         Empleados_Datos contactoDatos = new Empleados_Datos();
         Incapacidades_Datos incapacidadDatos = new Incapacidades_Datos();
-    
+        Vacaciones_Datos vacacionesDatos = new Vacaciones_Datos();
+
         public IActionResult Listar_Empleados()
         {
             var oLista = contactoDatos.Listar_Empleado();
@@ -92,16 +94,18 @@ namespace Jaime_Torres.Controllers
             }
         }
         [HttpGet]
-        public IActionResult Empleados_Detalle() 
+        public IActionResult Empleados_Detalle()
         {
 
             var oLista = contactoDatos.Listar_Empleado();
             //return View(oLista);
 
 
-            Empleado_View oEmpleado_View = new Empleado_View() {
+            Empleado_View oEmpleado_View = new Empleado_View()
+            {
                 oIncapacidad = new Incapacidades_Modelo(),
-                oListaEmpleados = oLista.Select(cargo => new SelectListItem(){
+                oListaEmpleados = oLista.Select(cargo => new SelectListItem()
+                {
                     Text = cargo.Nombres,
                     Value = cargo.Id_Empleado.ToString()
                 }).ToList()
@@ -166,6 +170,65 @@ namespace Jaime_Torres.Controllers
             {
                 return View();
             }
+        }
+        public IActionResult Listar_Vacaciones()
+        {
+            var oLista = vacacionesDatos.Listar_Vacaciones();
+            return View(oLista);
+        }
+        public IActionResult Guardar_Vacaciones(Vacaciones_Modelo oVacacion)
+        {
+            var respuesta = vacacionesDatos.Guardar_Vacaciones(oVacacion);
+            if (respuesta)
+            {
+                return RedirectToAction("Listar_Incapacidades");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        //[HttpGet]
+        public IActionResult Empleados_Detalle_Vacaciones()
+        {
+
+            var oLista = contactoDatos.Listar_Empleado();
+            //return View(oLista);
+
+
+            Empleado_Vacaciones_View oEmpleado_View = new Empleado_Vacaciones_View()
+            {
+                oVacaciones = new Vacaciones_Modelo(),
+                oListaEmpleados2 = oLista.Select(cargo => new SelectListItem()
+                {
+                    Text = cargo.Nombres,
+                    Value = cargo.Id_Empleado.ToString()
+                }).ToList()
+            };
+            return View(oEmpleado_View);
+        }
+
+        public IActionResult Listar_HE()
+        {
+            var oLista = vacacionesDatos.Listar_Vacaciones();
+            return View(oLista);
+        }
+
+        public IActionResult Listar_Odeducciones()
+        {
+            var oLista = vacacionesDatos.Listar_Vacaciones();
+            return View(oLista);
+        }
+        public IActionResult Listar_Odevengados()
+        {
+            var oLista = vacacionesDatos.Listar_Vacaciones();
+            return View(oLista);
+        }
+        public IActionResult Liquidar_Nomina()
+        {
+            var oLista = vacacionesDatos.Listar_Vacaciones();
+            return View(oLista);
         }
 
 
