@@ -29,8 +29,6 @@ namespace Jaime_Torres.Datos
                         DateTime dtnew2 = DateTime.Parse(v);
                         v = dr["Fecha_Modificacion"].ToString();
                         DateTime dtnew3 = DateTime.Parse(v);
-
-
                         oLista.Add(new Vacaciones_Modelo()
                         {
                             Id_Vacacion = Convert.ToInt32(dr["Id_Vacacion"]),

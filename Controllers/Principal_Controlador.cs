@@ -14,7 +14,6 @@ namespace Jaime_Torres.Controllers
         Empleados_Datos contactoDatos = new Empleados_Datos();
         Incapacidades_Datos incapacidadDatos = new Incapacidades_Datos();
         Vacaciones_Datos vacacionesDatos = new Vacaciones_Datos();
-
         public IActionResult Listar_Empleados()
         {
             var oLista = contactoDatos.Listar_Empleado();
@@ -80,7 +79,6 @@ namespace Jaime_Torres.Controllers
             var oLista = incapacidadDatos.Listar_Incapacidad();
             return View(oLista);
         }
-
         public IActionResult Guardar_Incapacidades(Incapacidades_Modelo oIncapacidad)
         {
             var respuesta = incapacidadDatos.Guardar_Incapacidad(oIncapacidad);
@@ -135,7 +133,6 @@ namespace Jaime_Torres.Controllers
 
             //return View(oIncapacidad);
         }
-
         public IActionResult Modificar_Incapacidades(Incapacidades_Modelo oIncapacidad)
         {
             if (!ModelState.IsValid)
@@ -230,7 +227,5 @@ namespace Jaime_Torres.Controllers
             var oLista = vacacionesDatos.Listar_Vacaciones();
             return View(oLista);
         }
-
-
     }
 }
